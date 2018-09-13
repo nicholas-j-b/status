@@ -3,6 +3,9 @@
 #include <chrono>
 #include <thread>
 
+// font info
+// font name "fixed"
+
 int main(int argc, char** argv)
 {
 	Display* display;
