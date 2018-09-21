@@ -3,7 +3,6 @@
 #include <chrono>
 #include <thread>
 #include <string>
-
 // font info
 // font name "fixed"
 
@@ -66,13 +65,15 @@ int main(int argc, char** argv)
 
 //	unsigned int win_x, win_y;
 //	unsigned int win_border_width;
-	const char* display_name = getenv("DISPLAY");
+	// const char* display_name = getenv("DISPLAY");
+ 	std::string display_name(":0");
+	// const char* display_name = temp.c_str();
 	std::cout << "display env: " << display_name << '\n';
 	GC gc;
 	XFontStruct* font_info;
 	std::string font_name = "fixed";
 
-	display = XOpenDisplay(display_name);
+	display = XOpenDisplay(display_name.c_str());
 	if(display == NULL){
 		std::cerr << "cannot connect to x server" << '\n';
 		return(1);
@@ -123,10 +124,7 @@ int main(int argc, char** argv)
 
 	XFlush(display);
 
-
-
-	std::this_thread::sleep_for(std::chrono::milliseconds(50000));
-
+	std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 
 	XCloseDisplay(display);
 
